@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -41,19 +42,19 @@ export const RealTimeMonitor = () => {
       icon: Settings,
       color: "from-red-400 to-red-600",
       variables: [
-        { name: "Bit Revolutions/minute Max (BR1)", value: "120 RPM", unit: "RPM" },
-        { name: "Bit Revolutions/minute Min (BR2)", value: "85 RPM", unit: "RPM" },
-        { name: "Rotary Revolutions/Minutes (RRM)", value: "110 RPM", unit: "RPM" },
-        { name: "Top Drive Rotary (TDR)", value: "105 RPM", unit: "RPM" },
-        { name: "Motor RPM (MRP)", value: "450 RPM", unit: "RPM" },
-        { name: "Top Drive Torque (TDT)", value: "12,500 Nm", unit: "Nm" },
-        { name: "Bit Torque (BTQ)", value: "8,750 Nm", unit: "Nm" },
-        { name: "Auto Driller Torque (ADT)", value: "11,200 Nm", unit: "Nm" },
-        { name: "Convertible Torque (CVT)", value: "9,800 Nm", unit: "Nm" },
-        { name: "Rotating Hours (RHS)", value: "24.5 hrs", unit: "hrs" },
-        { name: "Torque Motor Units (TMU)", value: "85%", unit: "%" },
-        { name: "d-exponent (DEX)", value: "1.85", unit: "" },
-        { name: "Depth of Cut (DOC)", value: "2.5 mm", unit: "mm" }
+        { name: "Bit Revolutions/minute Max (BR1)", value: "131.86", unit: "RPM" },
+        { name: "Bit Revolutions/minute Min (BR2)", value: "127.79", unit: "RPM" },
+        { name: "Rotary Revolutions/Minutes (RRM)", value: "24.02", unit: "RPM" },
+        { name: "Top Drive Rotary (TDR)", value: "27", unit: "RPM" },
+        { name: "Motor RPM (MRP)", value: "107", unit: "RPM" },
+        { name: "Top Drive Torque (TDT)", value: "2.952", unit: "kNm" },
+        { name: "Bit Torque (BTQ)", value: "2", unit: "kNm" },
+        { name: "Auto Driller Torque (ADT)", value: "4.913", unit: "kNm" },
+        { name: "Convertible Torque (CVT)", value: "2.776", unit: "kNm" },
+        { name: "Rotating Hours (RHS)", value: "112", unit: "hrs" },
+        { name: "Torque Motor Units (TMU)", value: "12261.01", unit: "" },
+        { name: "d-exponent (DEX)", value: "0.29", unit: "" },
+        { name: "Depth of Cut (DOC)", value: "0.325", unit: "inch" }
       ]
     },
     {
@@ -61,12 +62,12 @@ export const RealTimeMonitor = () => {
       icon: Droplets,
       color: "from-blue-400 to-blue-600",
       variables: [
-        { name: "Pump 1 strokes/min (P1S)", value: "85 SPM", unit: "SPM" },
-        { name: "Pump 2 strokes/min (P2S)", value: "78 SPM", unit: "SPM" },
-        { name: "Pump 3 strokes/min (P3S)", value: "82 SPM", unit: "SPM" },
-        { name: "Flow in-out (FIO)", value: "1,250 L/min", unit: "L/min" },
-        { name: "Standpipe Pressure (SPP)", value: "15.5 MPa", unit: "MPa" },
-        { name: "Temperature out Flow (TOF)", value: "68°C", unit: "°C" }
+        { name: "Pump 1 strokes/min (P1S)", value: "59.94", unit: "SPM" },
+        { name: "Pump 2 strokes/min (P2S)", value: "68.93", unit: "SPM" },
+        { name: "Pump 3 strokes/min (P3S)", value: "67.1", unit: "SPM" },
+        { name: "Flow in-out (FIO)", value: "72.5", unit: "L/min" },
+        { name: "Standpipe Pressure (SPP)", value: "15.5", unit: "MPa" },
+        { name: "Temperature out Flow (TOF)", value: "79.5107", unit: "°C" }
       ]
     },
     {
@@ -74,9 +75,9 @@ export const RealTimeMonitor = () => {
       icon: Navigation,
       color: "from-green-400 to-green-600",
       variables: [
-        { name: "AutoDriller Block Position (ADP)", value: "125.5 m", unit: "m" },
-        { name: "Bit Depth (BDE)", value: "2,850 m", unit: "m" },
-        { name: "Trip Speed (TPS)", value: "0.45 m/s", unit: "m/s" }
+        { name: "AutoDriller Block Position (ADP)", value: "205.12", unit: "feet" },
+        { name: "Bit Depth (BDE)", value: "215.15", unit: "feet" },
+        { name: "Trip Speed (TPS)", value: "111.63", unit: "feet/min" }
       ]
     },
     {
@@ -84,12 +85,12 @@ export const RealTimeMonitor = () => {
       icon: Shield,
       color: "from-purple-400 to-purple-600",
       variables: [
-        { name: "Differential Pressure (DFP)", value: "2.8 MPa", unit: "MPa" },
-        { name: "Min Pressure (MPE)", value: "8.5 MPa", unit: "MPa" },
-        { name: "Hookload Threshold (HKT)", value: "450 kN", unit: "kN" },
-        { name: "Hookload (HKL)", value: "385 kN", unit: "kN" },
-        { name: "Over Pull (OVP)", value: "25 kN", unit: "kN" },
-        { name: "Line Wear (LW)", value: "15%", unit: "%" },
+        { name: "Differential Pressure (DFP)", value: "111.63", unit: "psi" },
+        { name: "Min Pressure (MPE)", value: "55.2", unit: "psi" },
+        { name: "Hookload Threshold (HKT)", value: "42", unit: "klbs" },
+        { name: "Hookload (HKL)", value: "89.8", unit: "klbs" },
+        { name: "Over Pull (OVP)", value: "0", unit: "klbs" },
+        { name: "Line Wear (LW)", value: "15%", unit: "" },
         { name: "In Slip (ISP)", value: "Active", unit: "" }
       ]
     },
@@ -108,7 +109,7 @@ export const RealTimeMonitor = () => {
       <div className="text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Real-Time Monitoring</h2>
         <p className="text-lg text-gray-600">
-          Pemantauan langsung aktivitas pengeboran dengan prediksi ML real-time
+          Live drilling activity monitoring with real-time ML predictions
         </p>
       </div>
 

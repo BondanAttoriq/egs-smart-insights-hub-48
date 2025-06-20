@@ -39,19 +39,19 @@ export const ProfessionalAnalysis = () => {
     {
       priority: "High",
       title: "Optimize Weight on Bit (WOB)",
-      description: "Increase WOB by 8-12% untuk meningkatkan ROP hingga 15%",
+      description: "Increase WOB by 8-12% to improve ROP up to 15%",
       impact: "Cost Savings: $15,000/day"
     },
     {
       priority: "Medium",
       title: "Adjust Rotation Speed",
-      description: "Reduce RPM to 180-200 untuk mengurangi wear pada drill bit",
+      description: "Reduce RPM to 180-200 to minimize drill bit wear",
       impact: "Extended Equipment Life: +25%"
     },
     {
       priority: "Low",
       title: "Temperature Monitoring",
-      description: "Implement advanced cooling system untuk stabilitas thermal",
+      description: "Implement advanced cooling system for thermal stability",
       impact: "Efficiency Gain: +8%"
     }
   ];
@@ -61,7 +61,7 @@ export const ProfessionalAnalysis = () => {
       <div className="text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Professional Analysis</h2>
         <p className="text-lg text-gray-600">
-          Hasil analisis machine learning dan rekomendasi praktis dari para ahli
+          Machine learning analysis results and practical recommendations from industry experts
         </p>
       </div>
 
@@ -131,7 +131,7 @@ export const ProfessionalAnalysis = () => {
         <div className="text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Extra Trees Regressor Performance</h3>
           <p className="text-lg text-gray-600 mb-6">
-            Model terpilih menunjukkan performa superior dengan validasi ilmiah
+            Selected model demonstrates superior performance with scientific validation
           </p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
@@ -139,16 +139,16 @@ export const ProfessionalAnalysis = () => {
               <div className="text-sm text-gray-600">Coefficient of Determination</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600">2.1%</div>
+              <div className="text-3xl font-bold text-orange-600">1.9611</div>
               <div className="text-sm text-gray-600">Mean Absolute Error</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600">0.85 ms</div>
-              <div className="text-sm text-gray-600">Prediction Time</div>
+              <div className="text-3xl font-bold text-orange-600">3.8614</div>
+              <div className="text-sm text-gray-600">Root Mean Squared Error</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600">ITB</div>
-              <div className="text-sm text-gray-600">Research Validated</div>
+              <div className="text-3xl font-bold text-orange-600">10.5735%</div>
+              <div className="text-sm text-gray-600">Mean Absolute Percentage Error</div>
             </div>
           </div>
         </div>
