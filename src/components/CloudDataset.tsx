@@ -34,7 +34,7 @@ export const CloudDataset = () => {
       <div className="text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Cloud Dataset Management</h2>
         <p className="text-lg text-gray-600">
-          Akses dan kelola dataset pengeboran tersimpan di cloud untuk analisis lanjutan
+          Access and manage drilling datasets stored in the cloud for further analysis
         </p>
       </div>
 
