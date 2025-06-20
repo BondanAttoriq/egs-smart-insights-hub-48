@@ -1,64 +1,84 @@
+
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { TrendingUp, Zap, DollarSign, Target } from 'lucide-react';
+import { Play, Zap, TrendingUp, Shield } from 'lucide-react';
+import { SubscriptionModal } from './SubscriptionModal';
 
 export const HeroSection = () => {
-  const features = [
-    {
-      icon: Target,
-      title: "Accurate Predictions",
-      description: "Extra Trees Regressor model with an accuracy of R² = 0.9977 for precise Rate of Penetration (ROP) predictions."
-    },
-    {
-      icon: Zap,
-      title: "Real-Time Optimization",
-      description: "Direct monitoring and optimization of drilling parameters for maximum efficiency."
-    },
-    {
-      icon: DollarSign,
-      title: "Cost Savings",
-      description: "Reduce operational costs by up to 30% through data-driven optimization and machine learning."
-    },
-    {
-      icon: TrendingUp,
-      title: "Scientifically Validated",
-      description: "Technology validated through scientific research, boasting leading performance metrics."
-    }
-  ];
+  const [showTrialModal, setShowTrialModal] = useState(false);
 
   return (
-    <div className="space-y-12">
-      <div className="text-center max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold text-gray-900 mb-6">
-          EGS Drilling Technological Revolution
-        </h2>
-        <p className="text-xl text-gray-600 mb-8">
-          A multi-model machine learning platform that optimizes Enhanced Geothermal Systems (EGS) with industry-leading accuracy in Rate of Penetration (ROP) predictions.
-        </p>
-        <div className="flex justify-center space-x-4">
-          <Button size="lg" className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8">
-            Start Trial
+    <>
+      <section className="text-center space-y-8">
+        <div className="space-y-4">
+          <h1 className="text-5xl font-bold text-gray-900 leading-tight">
+            Revolutionize Your{' '}
+            <span className="bg-gradient-to-r from-orange-600 to-yellow-600 bg-clip-text text-transparent">
+              Geothermal Drilling
+            </span>
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Advanced machine learning algorithms optimize drilling parameters in real-time, 
+            reducing costs by up to 35% while maximizing Rate of Penetration (ROP) efficiency.
+          </p>
+        </div>
+
+        <div className="flex justify-center space-x-6">
+          <Button 
+            size="lg" 
+            className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-4 text-lg"
+            onClick={() => setShowTrialModal(true)}
+          >
+            <Play className="w-5 h-5 mr-2" />
+            Start Free Trial
           </Button>
-          <Button size="lg" variant="outline" className="border-orange-200 text-orange-600 hover:bg-orange-50 px-8">
-            Request Demo
+          <Button size="lg" variant="outline" className="border-orange-200 text-orange-600 hover:bg-orange-50 px-8 py-4 text-lg">
+            Watch Demo
           </Button>
         </div>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {features.map((feature, index) => {
-          const Icon = feature.icon;
-          return (
-            <Card key={index} className="p-6 border-orange-100 hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-yellow-500 rounded-lg flex items-center justify-center mb-4">
-                <Icon className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-              <p className="text-gray-600 text-sm">{feature.description}</p>
-            </Card>
-          );
-        })}
-      </div>
-    </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+          <Card className="p-8 text-center border-orange-100 hover:shadow-lg transition-shadow">
+            <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Zap className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Real-Time Optimization</h3>
+            <p className="text-gray-600">
+              AI-powered algorithms continuously analyze drilling parameters and provide instant recommendations 
+              for optimal performance.
+            </p>
+          </Card>
+
+          <Card className="p-8 text-center border-orange-100 hover:shadow-lg transition-shadow">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <TrendingUp className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Predictive Analytics</h3>
+            <p className="text-gray-600">
+              Advanced machine learning models predict drilling outcomes and identify potential issues 
+              before they impact operations.
+            </p>
+          </Card>
+
+          <Card className="p-8 text-center border-orange-100 hover:shadow-lg transition-shadow">
+            <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Shield className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Risk Mitigation</h3>
+            <p className="text-gray-600">
+              Comprehensive monitoring and early warning systems help prevent equipment failures 
+              and costly downtime.
+            </p>
+          </Card>
+        </div>
+      </section>
+
+      <SubscriptionModal
+        isOpen={showTrialModal}
+        onClose={() => setShowTrialModal(false)}
+        type="trial"
+      />
+    </>
   );
 };
