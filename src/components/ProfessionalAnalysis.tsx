@@ -160,7 +160,7 @@ export const ProfessionalAnalysis = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-orange-600">R² = 0.9977</div>
+                <div className="text-3xl font-bold text-orange-600">0.9977</div>
                 <div className="text-sm text-gray-600">Coefficient of Determination</div>
               </div>
               <div className="text-center">
@@ -172,7 +172,7 @@ export const ProfessionalAnalysis = () => {
                 <div className="text-sm text-gray-600">Root Mean Squared Error</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-orange-600">10.5735%</div>
+                <div className="text-3xl font-bold text-orange-600">10.573%</div>
                 <div className="text-sm text-gray-600">Mean Absolute Percentage Error</div>
               </div>
             </div>
