@@ -1,12 +1,13 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Play, Zap, TrendingUp, Shield } from 'lucide-react';
 import { SubscriptionModal } from './SubscriptionModal';
+import { DemoVideoModal } from './DemoVideoModal';
 
 export const HeroSection = () => {
   const [showTrialModal, setShowTrialModal] = useState(false);
+  const [showDemoModal, setShowDemoModal] = useState(false);
 
   return (
     <>
@@ -33,7 +34,12 @@ export const HeroSection = () => {
             <Play className="w-5 h-5 mr-2" />
             Start Free Trial
           </Button>
-          <Button size="lg" variant="outline" className="border-orange-200 text-orange-600 hover:bg-orange-50 px-8 py-4 text-lg">
+          <Button 
+            size="lg" 
+            variant="outline" 
+            className="border-orange-200 text-orange-600 hover:bg-orange-50 px-8 py-4 text-lg"
+            onClick={() => setShowDemoModal(true)}
+          >
             Watch Demo
           </Button>
         </div>
@@ -78,6 +84,11 @@ export const HeroSection = () => {
         isOpen={showTrialModal}
         onClose={() => setShowTrialModal(false)}
         type="trial"
+      />
+
+      <DemoVideoModal
+        isOpen={showDemoModal}
+        onClose={() => setShowDemoModal(false)}
       />
     </>
   );

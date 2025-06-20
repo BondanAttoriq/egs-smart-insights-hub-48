@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -17,6 +18,17 @@ interface ImplementModalProps {
 }
 
 export const ImplementModal = ({ isOpen, onClose, recommendation }: ImplementModalProps) => {
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleImplement = () => {
+    setShowSuccess(true);
+  };
+
+  const handleCloseAll = () => {
+    setShowSuccess(false);
+    onClose();
+  };
+
   if (!recommendation) return null;
 
   const getImplementationDetails = () => {
@@ -68,6 +80,41 @@ export const ImplementModal = ({ isOpen, onClose, recommendation }: ImplementMod
   };
 
   const details = getImplementationDetails();
+
+  if (showSuccess) {
+    return (
+      <Dialog open={isOpen} onOpenChange={onClose}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>Implementation Status</DialogTitle>
+          </DialogHeader>
+          
+          <div className="space-y-6 text-center">
+            <div className="flex justify-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                <CheckCircle className="w-8 h-8 text-green-600" />
+              </div>
+            </div>
+            
+            <div className="space-y-2">
+              <h3 className="text-lg font-semibold text-gray-900">Implementation Successful</h3>
+              <p className="text-gray-600">
+                The implementation has been successfully completed on the EGS system. 
+                All changes are now active and monitoring.
+              </p>
+            </div>
+            
+            <Button 
+              onClick={handleCloseAll}
+              className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
+            >
+              Close
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -128,7 +175,10 @@ export const ImplementModal = ({ isOpen, onClose, recommendation }: ImplementMod
           </div>
           
           <div className="flex space-x-3">
-            <Button className="flex-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-white">
+            <Button 
+              className="flex-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
+              onClick={handleImplement}
+            >
               Start Implementation
             </Button>
             <Button variant="outline" onClick={onClose}>

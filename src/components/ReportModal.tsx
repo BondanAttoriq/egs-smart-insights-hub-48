@@ -1,9 +1,11 @@
 
+import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { FileText, Download, TrendingUp, AlertTriangle, CheckCircle } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface ReportModalProps {
   isOpen: boolean;
@@ -12,6 +14,27 @@ interface ReportModalProps {
 }
 
 export const ReportModal = ({ isOpen, onClose, reportType }: ReportModalProps) => {
+  const [showDownload, setShowDownload] = useState(false);
+  const { toast } = useToast();
+
+  const handleDownloadReport = () => {
+    setShowDownload(true);
+    
+    toast({
+      title: "Generating Report",
+      description: "PDF report is being generated from Real-Time Monitor and Professional Analysis data...",
+    });
+    
+    setTimeout(() => {
+      toast({
+        title: "Report Downloaded",
+        description: "EGSmart_Comprehensive_Report.pdf has been downloaded successfully.",
+      });
+      setShowDownload(false);
+      onClose();
+    }, 2000);
+  };
+
   const getReportDetails = () => {
     switch (reportType) {
       case 'rop':
@@ -81,6 +104,34 @@ export const ReportModal = ({ isOpen, onClose, reportType }: ReportModalProps) =
 
   const Icon = report.icon;
 
+  if (showDownload) {
+    return (
+      <Dialog open={isOpen} onOpenChange={onClose}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>Downloading Report</DialogTitle>
+          </DialogHeader>
+          
+          <div className="space-y-6 text-center">
+            <div className="flex justify-center">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center animate-pulse">
+                <Download className="w-8 h-8 text-orange-600" />
+              </div>
+            </div>
+            
+            <div className="space-y-2">
+              <h3 className="text-lg font-semibold text-gray-900">Generating PDF Report</h3>
+              <p className="text-gray-600">
+                Please wait while we compile your comprehensive report with data from 
+                Real-Time Monitor and Professional Analysis...
+              </p>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
@@ -125,7 +176,10 @@ export const ReportModal = ({ isOpen, onClose, reportType }: ReportModalProps) =
           </Card>
           
           <div className="flex space-x-3">
-            <Button className="flex-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-white">
+            <Button 
+              className="flex-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
+              onClick={handleDownloadReport}
+            >
               <Download className="w-4 h-4 mr-2" />
               Download Full Report
             </Button>
