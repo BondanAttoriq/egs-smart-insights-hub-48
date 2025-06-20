@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Activity, Gauge, Zap, Settings, Droplets, Navigation, Shield, TrendingUp, Drill } from 'lucide-react';
+import {
+  Activity, Gauge, Zap, Settings, Droplets,
+  Navigation, Shield, TrendingUp, Drill
+} from 'lucide-react';
 
-const randomInRange = (min, max, decimals = 2) => (Math.random() * (max - min) + min).toFixed(decimals);
+const randomInRange = (min, max, decimals = 2) =>
+  (Math.random() * (max - min) + min).toFixed(decimals);
 
 export const RealTimeMonitor = () => {
-  // --- INISIALISASI AWAL STATE DENGAN DATA SEMENTARA AGAR LANGSUNG TAMPIL SAAT LOAD ---
+  // Inisialisasi state agar langsung tampil di render pertama
   const [metrics, setMetrics] = useState([
     { label: "Rate of Penetration", value: "200 feet/min", status: "Optimal", icon: Gauge, color: "text-green-600" },
     { label: "Depth of Cut", value: "20 inch", status: "Normal", icon: Drill, color: "text-blue-600" },
@@ -46,7 +50,8 @@ export const RealTimeMonitor = () => {
             { name: "Convertible Torque (CVT)", value: randomInRange(2.5, 3), unit: "kNm" },
             { name: "Rotating Hours (RHS)", value: randomInRange(100, 120, 0), unit: "hrs" },
             { name: "Torque Motor Units (TMU)", value: randomInRange(12000, 12500, 2), unit: "" },
-            { name: "d-exponent (DEX)", value: randomInRange(0.2, 0.3), unit: "" }
+            { name: "d-exponent (DEX)", value: randomInRange(0.2, 0.3), unit: "" },
+            { name: "Depth of Cut (DOC)", value: randomInRange(18, 23), unit: "inch" }
           ]
         },
         {
@@ -97,7 +102,7 @@ export const RealTimeMonitor = () => {
       ]);
     };
 
-    updateValues(); // Jalankan sekali agar tidak blank saat load
+    updateValues(); // tampilkan data pertama langsung saat load
     const interval = setInterval(updateValues, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -110,6 +115,7 @@ export const RealTimeMonitor = () => {
           Live drilling activity monitoring with real-time ML predictions
         </p>
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {metrics.map((metric, index) => {
           const Icon = metric.icon;
@@ -128,7 +134,7 @@ export const RealTimeMonitor = () => {
         })}
       </div>
 
-      {/* DETAIL MONITORING SEGMENT DITAMBAHKAN DI SINI */}
+      {/* DETAILED MONITORING SEGMENTS */}
       <div className="space-y-6">
         <h3 className="text-2xl font-bold text-gray-900 text-center">Detailed System Monitoring</h3>
         {monitoringSegments.map((segment, segmentIndex) => {
@@ -166,6 +172,25 @@ export const RealTimeMonitor = () => {
           );
         })}
       </div>
+
+      {/* LIVE PREDICTIONS */}
+      <Card className="p-8 bg-gradient-to-r from-orange-50 to-yellow-50 border-orange-100">
+        <h3 className="text-xl font-bold text-gray-900 mb-4">Live Predictions</h3>
+        <div className="space-y-4">
+          <div className="flex justify-between items-center p-4 bg-white rounded-lg">
+            <span className="font-medium">Predicted ROP (Next Hour)</span>
+            <span className="text-xl font-bold text-orange-600">value: `${randomInRange(180, 220) feet/min</span>
+          </div>
+          <div className="flex justify-between items-center p-4 bg-white rounded-lg">
+            <span className="font-medium">Optimization Recommendation</span>
+            <Badge className="bg-orange-100 text-orange-700">Increase WOB by 5%</Badge>
+          </div>
+          <div className="flex justify-between items-center p-4 bg-white rounded-lg">
+            <span className="font-medium">Cost Savings Today</span>
+            <span className="text-xl font-bold text-green-600">$12,450</span>
+          </div>
+        </div>
+      </Card>
     </div>
   );
 };
