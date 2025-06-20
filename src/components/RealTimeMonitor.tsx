@@ -5,12 +5,13 @@ import {
   Activity, Gauge, Zap, Settings, Droplets,
   Navigation, Shield, TrendingUp, Drill
 } from 'lucide-react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+// Fungsi random
 const randomInRange = (min, max, decimals = 2) =>
   (Math.random() * (max - min) + min).toFixed(decimals);
 
 export const RealTimeMonitor = () => {
-  // State utama
   const [metrics, setMetrics] = useState([
     { label: "Rate of Penetration", value: "200 feet/min", status: "Optimal", icon: Gauge, color: "text-green-600" },
     { label: "Depth of Cut", value: "20 inch", status: "Normal", icon: Drill, color: "text-blue-600" },
@@ -27,11 +28,28 @@ export const RealTimeMonitor = () => {
   // STATE BARU UNTUK LIVE PREDICTIONS
   const [predictedROP, setPredictedROP] = useState("200 m/hr");
   const [costSaving, setCostSaving] = useState("$12,450");
+  // STATE UNTUK GRAFIK
+  const [chartData, setChartData] = useState([
+    // Seed 10 data awal
+    ...Array(10).fill(0).map((_, idx) => {
+      const realROP = Number(randomInRange(180, 220));
+      const predictedROP = Number(realROP) + Number(randomInRange(-10, 10));
+      return {
+        index: idx + 1,
+        realROP,
+        predictedROP
+      };
+    })
+  ]);
 
   useEffect(() => {
     const updateValues = () => {
+      // RANDOM DATA DASHBOARD
+      const realROP = Number(randomInRange(180, 220));
+      const predROP = Number(realROP) + Number(randomInRange(-10, 10));
+
       setMetrics([
-        { label: "Rate of Penetration", value: `${randomInRange(180, 220)} feet/min`, status: "Optimal", icon: Gauge, color: "text-green-600" },
+        { label: "Rate of Penetration", value: `${realROP} feet/min`, status: "Optimal", icon: Gauge, color: "text-green-600" },
         { label: "Depth of Cut", value: `${randomInRange(15, 25)} inch`, status: "Normal", icon: Drill, color: "text-blue-600" },
         { label: "Drilling Activity", value: "Active", status: "Running", icon: Activity, color: "text-orange-600" },
         { label: "Power Consumption", value: `${randomInRange(1100, 1300, 0)} kW`, status: "Efficient", icon: Zap, color: "text-purple-600" }
@@ -41,7 +59,7 @@ export const RealTimeMonitor = () => {
           title: "Cutting Power",
           icon: Settings,
           color: "from-red-400 to-red-600",
-          variables: [    
+          variables: [
             { name: "Bit Revolutions/minute Max (BR1)", value: randomInRange(120, 135), unit: "RPM" },
             { name: "Bit Revolutions/minute Min (BR2)", value: randomInRange(120, 130), unit: "RPM" },
             { name: "Rotary Revolutions/Minutes (RRM)", value: randomInRange(20, 30), unit: "RPM" },
@@ -103,8 +121,18 @@ export const RealTimeMonitor = () => {
         }
       ]);
       // UPDATE STATE UNTUK LIVE PREDICTIONS
-      setPredictedROP(`${randomInRange(180, 220)} m/hr`);
+      setPredictedROP(`${predROP} m/hr`);
       setCostSaving(`$${(randomInRange(10000, 15000, 0))}`);
+
+      // Update data chart (max 30 point rolling)
+      setChartData(prev => {
+        const next = [...prev, {
+          index: prev.length ? prev[prev.length - 1].index + 1 : 1,
+          realROP,
+          predictedROP: predROP
+        }];
+        return next.length > 30 ? next.slice(next.length - 30) : next;
+      });
     };
 
     updateValues();
@@ -120,6 +148,27 @@ export const RealTimeMonitor = () => {
           Live drilling activity monitoring with real-time ML predictions
         </p>
       </div>
+      
+      {/* GRAFIK PERBANDINGAN ROP */}
+      <Card className="p-6 border-orange-100">
+        <h4 className="text-lg font-bold text-gray-900 mb-4">Real-Time ROP Comparison</h4>
+        <ResponsiveContainer width="100%" height={250}>
+          <LineChart
+            data={chartData}
+            margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="index" label={{ value: 'Time', position: 'insideBottomRight', offset: 0 }} />
+            <YAxis label={{ value: 'ROP (ft/min)', angle: -90, position: 'insideLeft' }} />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="realROP" stroke="#2563eb" name="Actual ROP" dot={false} />
+            <Line type="monotone" dataKey="predictedROP" stroke="#f59e42" name="Predicted ROP" strokeDasharray="5 5" dot={false} />
+          </LineChart>
+        </ResponsiveContainer>
+      </Card>
+
+      {/* Metrics Card */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {metrics.map((metric, index) => {
           const Icon = metric.icon;
