@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Activity, Gauge, Zap, Settings, Droplets, Navigation, Shield, TrendingUp, Scissors } from 'lucide-react';
+import { Activity, Gauge, Zap, Settings, Droplets, Navigation, Shield, TrendingUp, Drill } from 'lucide-react';
 
 export const RealTimeMonitor = () => {
   const metrics = [
@@ -17,7 +16,7 @@ export const RealTimeMonitor = () => {
       label: "Depth of Cut",
       value: "2.5 mm",
       status: "Normal",
-      icon: Scissors,
+      icon: Drill,
       color: "text-blue-600"
     },
     {
