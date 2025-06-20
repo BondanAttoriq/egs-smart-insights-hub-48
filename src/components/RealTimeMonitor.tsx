@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Activity, Gauge, Thermometer, Zap, Settings, Droplets, Navigation, Shield, TrendingUp } from 'lucide-react';
+import { Activity, Gauge, Zap, Settings, Droplets, Navigation, Shield, TrendingUp, Scissors } from 'lucide-react';
 
 export const RealTimeMonitor = () => {
   const metrics = [
@@ -14,10 +14,10 @@ export const RealTimeMonitor = () => {
       color: "text-green-600"
     },
     {
-      label: "Temperature",
-      value: "285°C",
+      label: "Depth of Cut",
+      value: "2.5 mm",
       status: "Normal",
-      icon: Thermometer,
+      icon: Scissors,
       color: "text-blue-600"
     },
     {
