@@ -117,7 +117,7 @@ export const RealTimeMonitor = () => {
           ]
         }
       ]);
-      setPredictedROP(`${predROP} m/hr`);
+      setPredictedROP(`${predROP.toFixed(2)} m/hr`);
       setCostSaving(`$${(randomInRange(10000, 15000, 0))}`);
 
       // CHART: rolling max 30 points, type number!
@@ -243,7 +243,7 @@ export const RealTimeMonitor = () => {
         <div className="space-y-4">
           <div className="flex justify-between items-center p-4 bg-white rounded-lg">
             <span className="font-medium">Predicted ROP (Next Hour)</span>
-            <span className="text-xl font-bold text-orange-600">{predictedROP}.2f</span>
+            <span className="text-xl font-bold text-orange-600">{predictedROP}</span>
           </div>
           <div className="flex justify-between items-center p-4 bg-white rounded-lg">
             <span className="font-medium">Optimization Recommendation</span>
