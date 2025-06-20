@@ -46,8 +46,7 @@ export const RealTimeMonitor = () => {
             { name: "Convertible Torque (CVT)", value: randomInRange(2.5, 3), unit: "kNm" },
             { name: "Rotating Hours (RHS)", value: randomInRange(100, 120, 0), unit: "hrs" },
             { name: "Torque Motor Units (TMU)", value: randomInRange(12000, 12500, 2), unit: "" },
-            { name: "d-exponent (DEX)", value: randomInRange(0.2, 0.3), unit: "" },
-            { name: "Depth of Cut (DOC)", value: randomInRange(18, 23), unit: "inch" }
+            { name: "d-exponent (DEX)", value: randomInRange(0.2, 0.3), unit: "" }
           ]
         },
         {
