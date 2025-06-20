@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Crown, TrendingUp, BarChart } from 'lucide-react';
@@ -89,7 +89,7 @@ export const AlgorithmComparison = () => {
               <div className="text-sm text-gray-600">Coefficient of Determination</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600">< 2.5%</div>
+              <div className="text-3xl font-bold text-orange-600">&lt; 2.5%</div>
               <div className="text-sm text-gray-600">Mean Absolute Error</div>
             </div>
             <div className="text-center">
