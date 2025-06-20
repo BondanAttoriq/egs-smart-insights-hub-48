@@ -13,7 +13,7 @@ export const Footer = () => {
             <span className="font-bold text-gray-900">EGSmart 1.0</span>
           </div>
           <p className="text-gray-600 text-sm">
-            Platform machine learning terdepan untuk optimasi pengeboran Enhanced Geothermal Systems.
+            The leading machine learning platform for optimizing Enhanced Geothermal Systems drilling
           </p>
         </div>
 
