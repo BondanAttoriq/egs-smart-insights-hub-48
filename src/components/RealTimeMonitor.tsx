@@ -8,14 +8,14 @@ export const RealTimeMonitor = () => {
   const metrics = [
     {
       label: "Rate of Penetration",
-      value: "45.2 m/hr",
+      value: "206.12 feet/min",
       status: "Optimal",
       icon: Gauge,
       color: "text-green-600"
     },
     {
       label: "Depth of Cut",
-      value: "2.5 mm",
+      value: "20.44 inch",
       status: "Normal",
       icon: Drill,
       color: "text-blue-600"
@@ -54,7 +54,7 @@ export const RealTimeMonitor = () => {
         { name: "Rotating Hours (RHS)", value: "112", unit: "hrs" },
         { name: "Torque Motor Units (TMU)", value: "12261.01", unit: "" },
         { name: "d-exponent (DEX)", value: "0.29", unit: "" },
-        { name: "Depth of Cut (DOC)", value: "0.325", unit: "inch" }
+        { name: "Depth of Cut (DOC)", value: "20.44", unit: "inch" }
       ]
     },
     {
