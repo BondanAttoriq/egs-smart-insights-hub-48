@@ -155,7 +155,7 @@ export const RealTimeMonitor = () => {
             margin={{ top: 16, right: 24, left: 8, bottom: 8 }}
           >
             <CartesianGrid strokeDasharray="4 4" stroke="#e5e7eb" />
-            <XAxis dataKey="index" tick={{ fontSize: 12 }} label={{ value: "Time (sample)", position: "insideBottom", fontWeight: 700, fontSize: 14 }} />
+            <XAxis dataKey="index" tick={{ fontSize: 12 }} label={{ value: "Time (hour)", position: "insideBottom", fontWeight: 700, fontSize: 14, offset: 20, dy: 20 }} />
             <YAxis tick={{ fontSize: 12 }} label={{ value: "ROP (ft/min)", angle: -90, position: "insideLeft", fontWeight: 700, fontSize: 14 }} />
             <Tooltip contentStyle={{ fontSize: 14 }} />
             <Legend verticalAlign="top" height={36} iconType="line" />
