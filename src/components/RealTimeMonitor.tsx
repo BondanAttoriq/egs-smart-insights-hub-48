@@ -243,7 +243,7 @@ export const RealTimeMonitor = () => {
         <div className="space-y-4">
           <div className="flex justify-between items-center p-4 bg-white rounded-lg">
             <span className="font-medium">Predicted ROP (Next Hour)</span>
-            <span className="text-xl font-bold text-orange-600">{predictedROP}</span>
+            <span className="text-xl font-bold text-orange-600">{predictedROP}.2f</span>
           </div>
           <div className="flex justify-between items-center p-4 bg-white rounded-lg">
             <span className="font-medium">Optimization Recommendation</span>
