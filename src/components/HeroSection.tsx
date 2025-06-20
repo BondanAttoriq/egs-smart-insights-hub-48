@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { TrendingUp, Zap, DollarSign, Target } from 'lucide-react';
@@ -7,23 +6,23 @@ export const HeroSection = () => {
   const features = [
     {
       icon: Target,
-      title: "Prediksi Akurat",
-      description: "Model Extra Trees Regressor dengan akurasi R² = 0.9977 untuk prediksi Rate of Penetration (ROP) yang presisi."
+      title: "Accurate Predictions",
+      description: "Extra Trees Regressor model with an accuracy of R² = 0.9977 for precise Rate of Penetration (ROP) predictions."
     },
     {
       icon: Zap,
-      title: "Optimasi Real-Time",
-      description: "Monitoring dan optimasi parameter pengeboran secara langsung untuk efisiensi maksimal."
+      title: "Real-Time Optimization",
+      description: "Direct monitoring and optimization of drilling parameters for maximum efficiency."
     },
     {
       icon: DollarSign,
-      title: "Penghematan Biaya",
-      description: "Reduksi biaya operasional hingga 30% melalui optimasi berbasis data dan machine learning."
+      title: "Cost Savings",
+      description: "Reduce operational costs by up to 30% through data-driven optimization and machine learning."
     },
     {
       icon: TrendingUp,
-      title: "Validasi Ilmiah",
-      description: "Teknologi yang telah divalidasi melalui penelitian ilmiah dengan metrik performa terdepan."
+      title: "Scientifically Validated",
+      description: "Technology validated through scientific research, boasting leading performance metrics."
     }
   ];
 
@@ -31,11 +30,10 @@ export const HeroSection = () => {
     <div className="space-y-12">
       <div className="text-center max-w-4xl mx-auto">
         <h2 className="text-4xl font-bold text-gray-900 mb-6">
-          Revolusi Teknologi Pengeboran Geothermal
+          EGS Drilling Technological Revolution
         </h2>
         <p className="text-xl text-gray-600 mb-8">
-          Platform berbasis multi-model machine learning yang mengoptimalkan Enhanced Geothermal Systems (EGS) 
-          dengan prediksi Rate of Penetration (ROP) paling akurat di industri.
+          A multi-model machine learning platform that optimizes Enhanced Geothermal Systems (EGS) with industry-leading accuracy in Rate of Penetration (ROP) predictions.
         </p>
         <div className="flex justify-center space-x-4">
           <Button size="lg" className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8">
