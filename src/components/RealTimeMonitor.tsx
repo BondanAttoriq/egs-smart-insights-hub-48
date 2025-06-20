@@ -7,9 +7,9 @@ import {
 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-// Fungsi random
+// Utility
 const randomInRange = (min, max, decimals = 2) =>
-  (Math.random() * (max - min) + min).toFixed(decimals);
+  Number((Math.random() * (max - min) + min).toFixed(decimals));
 
 export const RealTimeMonitor = () => {
   const [metrics, setMetrics] = useState([
@@ -25,28 +25,25 @@ export const RealTimeMonitor = () => {
       ]
     }
   ]);
-  // STATE BARU UNTUK LIVE PREDICTIONS
   const [predictedROP, setPredictedROP] = useState("200 m/hr");
   const [costSaving, setCostSaving] = useState("$12,450");
-  // STATE UNTUK GRAFIK
-  const [chartData, setChartData] = useState([
-    // Seed 10 data awal
-    ...Array(10).fill(0).map((_, idx) => {
-      const realROP = Number(randomInRange(180, 220));
-      const predictedROP = Number(realROP) + Number(randomInRange(-10, 10));
+  // --- CHART DATA: type number! ---
+  const [chartData, setChartData] = useState(
+    Array.from({ length: 10 }, (_, idx) => {
+      const realROP = randomInRange(180, 220);
+      const predictedROP = realROP + randomInRange(-10, 10);
       return {
         index: idx + 1,
         realROP,
         predictedROP
       };
     })
-  ]);
+  );
 
   useEffect(() => {
     const updateValues = () => {
-      // RANDOM DATA DASHBOARD
-      const realROP = Number(randomInRange(180, 220));
-      const predROP = Number(realROP) + Number(randomInRange(-10, 10));
+      const realROP = randomInRange(180, 220);
+      const predROP = realROP + randomInRange(-10, 10);
 
       setMetrics([
         { label: "Rate of Penetration", value: `${realROP} feet/min`, status: "Optimal", icon: Gauge, color: "text-green-600" },
@@ -71,7 +68,8 @@ export const RealTimeMonitor = () => {
             { name: "Convertible Torque (CVT)", value: randomInRange(2.5, 3), unit: "kNm" },
             { name: "Rotating Hours (RHS)", value: randomInRange(100, 120, 0), unit: "hrs" },
             { name: "Torque Motor Units (TMU)", value: randomInRange(12000, 12500, 2), unit: "" },
-            { name: "d-exponent (DEX)", value: randomInRange(0.2, 0.3), unit: "" }
+            { name: "d-exponent (DEX)", value: randomInRange(0.2, 0.3), unit: "" },
+            { name: "Depth of Cut (DOC)", value: randomInRange(18, 23), unit: "inch" }
           ]
         },
         {
@@ -120,11 +118,10 @@ export const RealTimeMonitor = () => {
           ]
         }
       ]);
-      // UPDATE STATE UNTUK LIVE PREDICTIONS
       setPredictedROP(`${predROP} m/hr`);
       setCostSaving(`$${(randomInRange(10000, 15000, 0))}`);
 
-      // Update data chart (max 30 point rolling)
+      // CHART: rolling max 30 points, type number!
       setChartData(prev => {
         const next = [...prev, {
           index: prev.length ? prev[prev.length - 1].index + 1 : 1,
@@ -143,32 +140,47 @@ export const RealTimeMonitor = () => {
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Real-Time Monitoring</h2>
+        <h2 className="text-4xl font-bold text-gray-900 mb-2">Real-Time Monitoring</h2>
         <p className="text-lg text-gray-600">
           Live drilling activity monitoring with real-time ML predictions
         </p>
       </div>
-      
+
       {/* GRAFIK PERBANDINGAN ROP */}
-      <Card className="p-6 border-orange-100">
-        <h4 className="text-lg font-bold text-gray-900 mb-4">Real-Time ROP Comparison</h4>
-        <ResponsiveContainer width="100%" height={250}>
+      <Card className="p-8 border-orange-100">
+        <h3 className="text-2xl font-bold text-gray-900 mb-4">ROP Comparison (Current vs Predicted)</h3>
+        <ResponsiveContainer width="100%" height={350}>
           <LineChart
             data={chartData}
-            margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+            margin={{ top: 16, right: 24, left: 8, bottom: 8 }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="index" label={{ value: 'Time', position: 'insideBottomRight', offset: 0 }} />
-            <YAxis label={{ value: 'ROP (ft/min)', angle: -90, position: 'insideLeft' }} />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="realROP" stroke="#2563eb" name="Actual ROP" dot={false} />
-            <Line type="monotone" dataKey="predictedROP" stroke="#f59e42" name="Predicted ROP" strokeDasharray="5 5" dot={false} />
+            <CartesianGrid strokeDasharray="4 4" stroke="#e5e7eb" />
+            <XAxis dataKey="index" tick={{ fontSize: 12 }} label={{ value: "Time (sample)", position: "insideBottom", fontWeight: 700, fontSize: 14 }} />
+            <YAxis tick={{ fontSize: 12 }} label={{ value: "ROP (ft/min)", angle: -90, position: "insideLeft", fontWeight: 700, fontSize: 14 }} />
+            <Tooltip contentStyle={{ fontSize: 14 }} />
+            <Legend verticalAlign="top" height={36} iconType="line" />
+            <Line
+              type="monotone"
+              dataKey="realROP"
+              stroke="#2563eb"
+              strokeWidth={2.5}
+              dot={false}
+              name="Actual ROP"
+            />
+            <Line
+              type="monotone"
+              dataKey="predictedROP"
+              stroke="#f59e42"
+              strokeDasharray="6 4"
+              strokeWidth={2.5}
+              dot={false}
+              name="Predicted ROP"
+            />
           </LineChart>
         </ResponsiveContainer>
       </Card>
 
-      {/* Metrics Card */}
+      {/* METRICS */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {metrics.map((metric, index) => {
           const Icon = metric.icon;
@@ -186,6 +198,7 @@ export const RealTimeMonitor = () => {
           );
         })}
       </div>
+
       {/* DETAILED MONITORING SEGMENTS */}
       <div className="space-y-6">
         <h3 className="text-2xl font-bold text-gray-900 text-center">Detailed System Monitoring</h3>
@@ -224,6 +237,7 @@ export const RealTimeMonitor = () => {
           );
         })}
       </div>
+
       {/* LIVE PREDICTIONS */}
       <Card className="p-8 bg-gradient-to-r from-orange-50 to-yellow-50 border-orange-100">
         <h3 className="text-xl font-bold text-gray-900 mb-4">Live Predictions</h3>
