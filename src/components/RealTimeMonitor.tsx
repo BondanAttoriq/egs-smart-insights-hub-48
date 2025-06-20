@@ -9,73 +9,90 @@ export const RealTimeMonitor = () => {
   const [metrics, setMetrics] = useState([]);
   const [monitoringSegments, setMonitoringSegments] = useState([]);
 
-  useEffect(() => {
-    const updateValues = () => {
-      setMetrics([
-        { label: "Rate of Penetration", value: `${randomInRange(180, 220)} feet/min`, status: "Optimal", icon: Gauge, color: "text-green-600" },
-        { label: "Depth of Cut", value: `${randomInRange(15, 25)} inch`, status: "Normal", icon: Drill, color: "text-blue-600" },
-        { label: "Drilling Activity", value: "Active", status: "Running", icon: Activity, color: "text-orange-600" },
-        { label: "Power Consumption", value: `${randomInRange(1100, 1300, 0)} kW`, status: "Efficient", icon: Zap, color: "text-purple-600" }
-      ]);
-      setMonitoringSegments([
-          title: "Cutting Power", icon: Settings, color: "from-red-400 to-red-600", variables: [
-            { name: "Bit Revolutions/minute Max (BR1)", value: randomInRange(120, 135), unit: "RPM" },
-            { name: "Bit Revolutions/minute Min (BR2)", value: randomInRange(120, 130), unit: "RPM" },
-            { name: "Rotary Revolutions/Minutes (RRM)", value: randomInRange(20, 30), unit: "RPM" },
-            { name: "Top Drive Rotary (TDR)", value: randomInRange(25, 30, 0), unit: "RPM" },
-            { name: "Motor RPM (MRP)", value: randomInRange(100, 110, 0), unit: "RPM" },
-            { name: "Top Drive Torque (TDT)", value: randomInRange(2.5, 3.5, 3), unit: "kNm" },
-            { name: "Bit Torque (BTQ)", value: randomInRange(1.5, 2.5), unit: "kNm" },
-            { name: "Auto Driller Torque (ADT)", value: randomInRange(4, 5.5, 3), unit: "kNm" },
-            { name: "Convertible Torque (CVT)", value: randomInRange(2.5, 3), unit: "kNm" },
-            { name: "Rotating Hours (RHS)", value: randomInRange(100, 120, 0), unit: "hrs" },
-            { name: "Torque Motor Units (TMU)", value: randomInRange(12000, 12500, 2), unit: "" },
-            { name: "d-exponent (DEX)", value: randomInRange(0.2, 0.3), unit: "" },
-            { name: "Depth of Cut (DOC)", value: randomInRange(18, 23), unit: "inch" }
-          ]
-        },
-        {
-          title: "Hydraulic and Fluid System", icon: Droplets, color: "from-blue-400 to-blue-600", variables: [
-            { name: "Pump 1 strokes/min (P1S)", value: randomInRange(50, 70), unit: "SPM" },
-            { name: "Pump 2 strokes/min (P2S)", value: randomInRange(60, 75), unit: "SPM" },
-            { name: "Pump 3 strokes/min (P3S)", value: randomInRange(60, 75), unit: "SPM" },
-            { name: "Flow in-out (FIO)", value: randomInRange(70, 80), unit: "L/min" },
-            { name: "Standpipe Pressure (SPP)", value: randomInRange(14, 17), unit: "MPa" },
-            { name: "Temperature out Flow (TOF)", value: randomInRange(75, 85), unit: "°C" }
-          ]
-        },
-        {
-          title: "Drilling Path and String Movement", icon: Navigation, color: "from-green-400 to-green-600", variables: [
-            { name: "AutoDriller Block Position (ADP)", value: randomInRange(200, 210), unit: "feet" },
-            { name: "Bit Depth (BDE)", value: randomInRange(210, 220), unit: "feet" },
-            { name: "Trip Speed (TPS)", value: randomInRange(100, 120), unit: "feet/min" }
-          ]
-        },
-        {
-          title: "Pressure, Load, and Structural Stability", icon: Shield, color: "from-purple-400 to-purple-600", variables: [
-            { name: "Differential Pressure (DFP)", value: randomInRange(100, 120), unit: "psi" },
-            { name: "Min Pressure (MPE)", value: randomInRange(50, 60), unit: "psi" },
-            { name: "Hookload Threshold (HKT)", value: randomInRange(40, 45), unit: "klbs" },
-            { name: "Hookload (HKL)", value: randomInRange(85, 95), unit: "klbs" },
-            { name: "Over Pull (OVP)", value: randomInRange(0, 1), unit: "klbs" },
-            { name: "Line Wear (LW)", value: `${randomInRange(10, 20, 0)}%`, unit: "" },
-            { name: "In Slip (ISP)", value: "Active", unit: "" }
-          ]
-        },
-        {
-          title: "Operational Optimization and Monitoring", icon: TrendingUp, color: "from-orange-400 to-orange-600", variables: [
-            { name: "Drilling Advisory System - Bottom Hole Assembly Stick Slip (DAS)", value: "Normal", unit: "" }
-          ]
-        }
-      ]);
-    };
+useEffect(() => {
+  const updateValues = () => {
+    setMetrics([
+      { label: "Rate of Penetration", value: `${randomInRange(180, 220)} feet/min`, status: "Optimal", icon: Gauge, color: "text-green-600" },
+      { label: "Depth of Cut", value: `${randomInRange(15, 25)} inch`, status: "Normal", icon: Drill, color: "text-blue-600" },
+      { label: "Drilling Activity", value: "Active", status: "Running", icon: Activity, color: "text-orange-600" },
+      { label: "Power Consumption", value: `${randomInRange(1100, 1300, 0)} kW`, status: "Efficient", icon: Zap, color: "text-purple-600" }
+    ]);
 
-    updateValues();
-    const interval = setInterval(updateValues, 3000);
+    setMonitoringSegments([
+      {
+        title: "Cutting Power",
+        icon: Settings,
+        color: "from-red-400 to-red-600",
+        variables: [
+          { name: "Bit Revolutions/minute Max (BR1)", value: randomInRange(120, 135), unit: "RPM" },
+          { name: "Bit Revolutions/minute Min (BR2)", value: randomInRange(120, 130), unit: "RPM" },
+          { name: "Rotary Revolutions/Minutes (RRM)", value: randomInRange(20, 30), unit: "RPM" },
+          { name: "Top Drive Rotary (TDR)", value: randomInRange(25, 30, 0), unit: "RPM" },
+          { name: "Motor RPM (MRP)", value: randomInRange(100, 110, 0), unit: "RPM" },
+          { name: "Top Drive Torque (TDT)", value: randomInRange(2.5, 3.5, 3), unit: "kNm" },
+          { name: "Bit Torque (BTQ)", value: randomInRange(1.5, 2.5), unit: "kNm" },
+          { name: "Auto Driller Torque (ADT)", value: randomInRange(4, 5.5, 3), unit: "kNm" },
+          { name: "Convertible Torque (CVT)", value: randomInRange(2.5, 3), unit: "kNm" },
+          { name: "Rotating Hours (RHS)", value: randomInRange(100, 120, 0), unit: "hrs" },
+          { name: "Torque Motor Units (TMU)", value: randomInRange(12000, 12500, 2), unit: "" },
+          { name: "d-exponent (DEX)", value: randomInRange(0.2, 0.3), unit: "" },
+          { name: "Depth of Cut (DOC)", value: randomInRange(18, 23), unit: "inch" }
+        ]
+      },
+      {
+        title: "Hydraulic and Fluid System",
+        icon: Droplets,
+        color: "from-blue-400 to-blue-600",
+        variables: [
+          { name: "Pump 1 strokes/min (P1S)", value: randomInRange(50, 70), unit: "SPM" },
+          { name: "Pump 2 strokes/min (P2S)", value: randomInRange(60, 75), unit: "SPM" },
+          { name: "Pump 3 strokes/min (P3S)", value: randomInRange(60, 75), unit: "SPM" },
+          { name: "Flow in-out (FIO)", value: randomInRange(70, 80), unit: "L/min" },
+          { name: "Standpipe Pressure (SPP)", value: randomInRange(14, 17), unit: "MPa" },
+          { name: "Temperature out Flow (TOF)", value: randomInRange(75, 85), unit: "°C" }
+        ]
+      },
+      {
+        title: "Drilling Path and String Movement",
+        icon: Navigation,
+        color: "from-green-400 to-green-600",
+        variables: [
+          { name: "AutoDriller Block Position (ADP)", value: randomInRange(200, 210), unit: "feet" },
+          { name: "Bit Depth (BDE)", value: randomInRange(210, 220), unit: "feet" },
+          { name: "Trip Speed (TPS)", value: randomInRange(100, 120), unit: "feet/min" }
+        ]
+      },
+      {
+        title: "Pressure, Load, and Structural Stability",
+        icon: Shield,
+        color: "from-purple-400 to-purple-600",
+        variables: [
+          { name: "Differential Pressure (DFP)", value: randomInRange(100, 120), unit: "psi" },
+          { name: "Min Pressure (MPE)", value: randomInRange(50, 60), unit: "psi" },
+          { name: "Hookload Threshold (HKT)", value: randomInRange(40, 45), unit: "klbs" },
+          { name: "Hookload (HKL)", value: randomInRange(85, 95), unit: "klbs" },
+          { name: "Over Pull (OVP)", value: randomInRange(0, 1), unit: "klbs" },
+          { name: "Line Wear (LW)", value: `${randomInRange(10, 20, 0)}%`, unit: "" },
+          { name: "In Slip (ISP)", value: "Active", unit: "" }
+        ]
+      },
+      {
+        title: "Operational Optimization and Monitoring",
+        icon: TrendingUp,
+        color: "from-orange-400 to-orange-600",
+        variables: [
+          { name: "Drilling Advisory System - Bottom Hole Assembly Stick Slip (DAS)", value: "Normal", unit: "" }
+        ]
+      }
+    ]);
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  updateValues();
+  const interval = setInterval(updateValues, 3000);
 
+  return () => clearInterval(interval);
+}, []);
+  
   return (
     <div className="space-y-8">
       <div className="text-center">
