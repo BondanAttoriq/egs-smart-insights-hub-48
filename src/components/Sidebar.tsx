@@ -13,6 +13,7 @@ export const Sidebar = ({ activeSection, setActiveSection }: SidebarProps) => {
     { id: 'monitor', label: 'Real-Time Monitor', icon: Monitor },
     { id: 'dataset', label: 'Cloud Dataset', icon: Database },
     { id: 'analysis', label: 'Professional Analysis', icon: BarChart3 },
+    { id: 'egs-analysis', label: 'EGS Offset Analysis', icon: Monitor, href: '/egs-analysis' },
   ];
 
   return (
@@ -35,18 +36,31 @@ export const Sidebar = ({ activeSection, setActiveSection }: SidebarProps) => {
             const Icon = item.icon;
             return (
               <li key={item.id}>
-                <button
-                  onClick={() => setActiveSection(item.id)}
-                  className={cn(
-                    "w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-colors",
-                    activeSection === item.id
-                      ? "bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-700 border border-orange-200"
-                      : "text-gray-600 hover:bg-orange-50 hover:text-orange-600"
-                  )}
-                >
-                  <Icon className="w-5 h-5" />
-                  <span className="font-medium">{item.label}</span>
-                </button>
+                {(item as any).href ? (
+                  <a
+                    href={(item as any).href}
+                    className={cn(
+                      "w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-colors",
+                      "text-gray-600 hover:bg-orange-50 hover:text-orange-600"
+                    )}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="font-medium">{item.label}</span>
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => setActiveSection(item.id)}
+                    className={cn(
+                      "w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-colors",
+                      activeSection === item.id
+                        ? "bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-700 border border-orange-200"
+                        : "text-gray-600 hover:bg-orange-50 hover:text-orange-600"
+                    )}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="font-medium">{item.label}</span>
+                  </button>
+                )}
               </li>
             );
           })}
