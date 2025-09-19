@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Well } from '@/pages/EGSAnalysis';
+import { Well } from '@/types/wells';
 
 interface EGSKPIChipsProps {
   wells: Well[];

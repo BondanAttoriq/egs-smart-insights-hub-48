@@ -6,7 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Download, Search, ArrowUpDown, Eye, EyeOff, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Well } from '@/pages/EGSAnalysis';
+import { Well } from '@/types/wells';
 
 interface EGSDataTableProps {
   wells: Well[];

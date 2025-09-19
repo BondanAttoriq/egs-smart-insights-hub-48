@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { EGSMapPanel } from './EGSMapPanel';
-import { Well } from '@/pages/EGSAnalysis';
+import { Well } from '@/types/wells';
 
 interface MapWrapperProps {
   wells: Well[];

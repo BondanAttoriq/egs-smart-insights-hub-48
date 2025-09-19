@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
 import { Target, RotateCcw } from 'lucide-react';
-import { Well } from '@/pages/EGSAnalysis';
+import { Well } from '@/types/wells';
 
 interface EGSControlPanelProps {
   selectedWell: string;

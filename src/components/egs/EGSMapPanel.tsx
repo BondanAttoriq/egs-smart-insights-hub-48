@@ -6,7 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ZoomIn, ZoomOut, Maximize, Move, Ruler } from 'lucide-react';
-import { Well } from '@/pages/EGSAnalysis';
+import { Well } from '@/types/wells';
 import { geologyData } from '@/data/geology';
 import { formationsData } from '@/data/formations';
 
