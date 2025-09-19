@@ -7,8 +7,8 @@ import { ZoomIn, ZoomOut, Maximize, Move, Ruler } from 'lucide-react';
 import { Well } from '@/pages/EGSAnalysis';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import geologyData from '@/data/geology.json';
-import formationsData from '@/data/formations.json';
+import { geologyData } from '@/data/geology';
+import { formationsData } from '@/data/formations';
 
 // Fix for default markers
 delete (L.Icon.Default.prototype as any)._getIconUrl;

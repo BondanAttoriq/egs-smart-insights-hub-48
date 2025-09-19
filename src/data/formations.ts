@@ -1,4 +1,4 @@
-{
+export const formationsData = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -70,4 +70,4 @@
       }
     }
   ]
-}
+} as const;

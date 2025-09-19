@@ -1,4 +1,4 @@
-{
+export const geologyData = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -87,4 +87,4 @@
       }
     }
   ]
-}
+} as const;
