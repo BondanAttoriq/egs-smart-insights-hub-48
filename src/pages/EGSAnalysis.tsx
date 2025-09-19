@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { EGSHeader } from '@/components/egs/EGSHeader';
 import { EGSSidebar } from '@/components/egs/EGSSidebar';
-import { EGSMapPanel } from '@/components/egs/EGSMapPanel';
+import { MapWrapper } from '@/components/egs/MapWrapper';
 import { EGSControlPanel } from '@/components/egs/EGSControlPanel';
 import { EGSDataTable } from '@/components/egs/EGSDataTable';
 import { EGSKPIChips } from '@/components/egs/EGSKPIChips';
@@ -128,7 +128,7 @@ const EGSAnalysis = () => {
           {/* Map and Controls Row */}
           <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 h-[500px]">
             <div className="xl:col-span-3">
-              <EGSMapPanel
+              <MapWrapper
                 wells={wells}
                 selectedWell={selectedWell}
                 mapLayer={mapLayer}
